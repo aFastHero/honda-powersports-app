@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     dealerNet: DataTypes.FLOAT,
     grossProfit: DataTypes.FLOAT,
     gpPercentage: DataTypes.FLOAT,
-    retailSalesBonusAmount: DataTypes.FLOAT,
+    retailSalesBonusAmount: {
+      type: DataTypes.DOUBLE,
+      allowNull: true,
+      defaultValue: null,
+    },
     rsbPercentage: DataTypes.FLOAT,
     invoice: DataTypes.FLOAT,
     setupFlagRate: DataTypes.FLOAT,
