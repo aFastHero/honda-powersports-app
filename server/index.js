@@ -6,6 +6,14 @@ const { sequelize } = require('./sequelize');
 const importDataRoutes = require('./routes/importData');
 const currentInventoryRoutes = require('./routes/currentInventoryRoutes');
 const incomingInventoryRoutes = require('./routes/incomingInventoryRoutes');
+const cors = require('cors');
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200, // For legacy browser support
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 

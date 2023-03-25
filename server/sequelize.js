@@ -25,6 +25,7 @@ sequelize.sync();
 
 module.exports = {
   sequelize, // Add this line to export the sequelize object
+  DataTypes, // Add this line to export the DataTypes object
   CurrentInventory,
   IncomingInventory,
   HondaModelCatalog,
