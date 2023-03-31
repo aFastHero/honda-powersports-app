@@ -1,4 +1,4 @@
-Estimated Ship Date,Order Number,Honda Code,Model,Year,Color,MSRP,Dealer Invoice,Order Type,Order Date,Wh,Status Code,Status Description,Index,Unit Type,Model Name
+estimatedShipDate,orderNumber,hondaCode,model,year,color,msrp,dealerInvoice,orderType,orderDate,wh,statusCode,statusDescription,index,unitType,modelName
 3/15/2023,12353871,257048,CRF125FBP,23,RE,3799,3643,OG,3/10/2023,90,6,INVOICED,257048-12353871-0,DIRTBIKE,CRF125F BIG WHEEL
 3/15/2023,12353871,257028,CRF125FP,23,RE,3399,3291,OG,3/10/2023,90,6,INVOICED,257028-12353871-1,DIRTBIKE,CRF125F
 3/16/2023,12348365,258098,SXS10M6DP,23,RE,21899,20447,OG,2/16/2023,90,6,INVOICED,258098-12348365-3,SXS UTILITY,PIONEER 1000-6 DELUXE CREW
