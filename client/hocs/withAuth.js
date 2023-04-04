@@ -18,7 +18,7 @@ const withAuth = (Component) => {
               return;
             }
             const response = await axios.get('/api/me');
-            console.log('Response:', response);
+            // console.log('Response:', response);
             if (!response.data.user) {
               router.push('/login');
             }

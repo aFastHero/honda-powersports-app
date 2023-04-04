@@ -50,9 +50,11 @@ const jwtLogin = new JwtStrategy(jwtOptions, async (payload, done) => {
     if (user) {
       done(null, user);
     } else {
+      // console.log('User not found in JWT strategy, payload:', payload);
       done(null, false);
     }
   } catch (err) {
+    // console.log('Error in JWT strategy:', err);
     done(err, false);
   }
 });

@@ -16,7 +16,7 @@ const LoginPage = () => {
       const response = await axios.post('http://localhost:3001/api/login', { email, password });
       if (response.data.user) {
         // Set the token in the cookies
-        console.log('Login response:', response.data);
+        // console.log('Login response:', response.data);
         Cookies.set('token', response.data.token, { expires: 1 }); // Change 1 to the number of days you want the token to be stored
 
         // Redirect to the dashboard

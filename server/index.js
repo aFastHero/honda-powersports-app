@@ -34,6 +34,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  // console.log('Middleware before routes:', req.url);
+  next();
+});
+
 app.use('/api', authRoutes);
 
 const ensureAuthenticated = (req, res, next) => {
@@ -44,8 +49,8 @@ const ensureAuthenticated = (req, res, next) => {
 };
 
 app.use('/api', importDataRoutes);
-app.use('/api/currentInventory', ensureAuthenticated, currentInventoryRoutes);
-app.use('/api/incomingInventory', ensureAuthenticated, incomingInventoryRoutes);
+app.use('/api/currentInventory', currentInventoryRoutes);
+app.use('/api/incomingInventory', incomingInventoryRoutes);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

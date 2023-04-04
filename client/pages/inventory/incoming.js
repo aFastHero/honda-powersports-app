@@ -5,7 +5,7 @@ import { useQuery } from 'react-query';
 import apiClient from '../../lib/apiClient';
 
 const fetchIncomingInventory = async () => {
-  const response = await apiClient.get('/incomingInventory');
+  const response = await apiClient.get('/api/incomingInventory');
   return response.data;
 };
 
@@ -20,7 +20,7 @@ const IncomingInventory = () => {
     <div>
       <h1>Incoming Inventory</h1>
       <ul>
-        {incomingInventory.map((item) => (
+        {incomingInventory && incomingInventory.map((item) => (
           <li key={item.id}>
             {item.model} ({item.estimatedShipDate}) - {item.quantity} ({item.hondaCode})
           </li>
