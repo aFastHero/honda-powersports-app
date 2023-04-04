@@ -30,4 +30,5 @@ const CurrentInventory = () => {
   );
 };
 
+CurrentInventory.publicRoute = true;
 export default CurrentInventory;

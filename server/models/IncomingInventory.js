@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     wh: DataTypes.STRING,
     statusCode: DataTypes.STRING,
     statusDescription: DataTypes.STRING,
-    index: DataTypes.INTEGER,
+    index: DataTypes.STRING,
     unitType: DataTypes.STRING,
     modelName: DataTypes.STRING,
     createdAt: {

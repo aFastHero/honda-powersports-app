@@ -30,4 +30,5 @@ const IncomingInventory = () => {
   );
 };
 
+IncomingInventory.publicRoute = true;
 export default IncomingInventory;

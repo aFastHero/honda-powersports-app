@@ -1,8 +1,10 @@
+// server/sequelize.js
 const { Sequelize, DataTypes } = require('sequelize');
 const config = require('./config/config.json');
 const CurrentInventoryModel = require('./models/CurrentInventory');
 const IncomingInventoryModel = require('./models/IncomingInventory');
 const HondaModelCatalogModel = require('./models/HondaModelCatalog');
+const UsersModel = require('./models/Users');
 
 const sequelize = new Sequelize(
   config.development.database,
@@ -20,6 +22,7 @@ const sequelize = new Sequelize(
 const CurrentInventory = CurrentInventoryModel(sequelize, DataTypes);
 const IncomingInventory = IncomingInventoryModel(sequelize, DataTypes);
 const HondaModelCatalog = HondaModelCatalogModel(sequelize, DataTypes);
+const Users = UsersModel(sequelize, DataTypes);
 
 sequelize.sync();
 
@@ -29,4 +32,5 @@ module.exports = {
   CurrentInventory,
   IncomingInventory,
   HondaModelCatalog,
+  Users,
 };

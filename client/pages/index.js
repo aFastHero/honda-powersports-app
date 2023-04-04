@@ -1,7 +1,7 @@
 // client/pages/index.js
-
 import React from 'react';
 import Link from 'next/link';
+import withAuth from '../hocs/withAuth';
 
 const HomePage = () => {
   return (
@@ -25,4 +25,5 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+HomePage.publicRoute = true;
+export default withAuth(HomePage);

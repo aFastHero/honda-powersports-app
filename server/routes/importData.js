@@ -1,3 +1,5 @@
+// server/routes/importData.js
+const path = require('path');
 const express = require('express');
 const router = express.Router();
 const { CurrentInventory, IncomingInventory, HondaModelCatalog } = require('../sequelize');
@@ -6,7 +8,7 @@ const fs = require('fs');
 
 const importCsvData = (csvPath, model) => {
   return new Promise((resolve, reject) => {
-    fs.createReadStream(csvPath)
+    fs.createReadStream(path.join(__dirname, '..', '..', csvPath))
       .pipe(csv())
       .on('data', (row) => {
         model.create(row);
