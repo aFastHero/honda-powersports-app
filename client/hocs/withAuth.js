@@ -14,17 +14,16 @@ const withAuth = (Component) => {
           try {
             const token = Cookies.get('token');
             if (!token) {
-              router.push('/login');
+              router.push('/');
               return;
             }
             const response = await axios.get('/api/me');
-            // console.log('Response:', response);
             if (!response.data.user) {
-              router.push('/login');
+              router.push('/');
             }
           } catch (error) {
             console.error('Error:', error);
-            router.push('/login');
+            router.push('/');
           }
         })();
       }

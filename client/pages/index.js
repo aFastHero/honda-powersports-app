@@ -1,26 +1,23 @@
 // client/pages/index.js
-import React from 'react';
-import Link from 'next/link';
+import React, { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Cookie from 'js-cookie';
 import withAuth from '../hocs/withAuth';
 
 const HomePage = () => {
+  const router = useRouter();
+  const token = Cookie.get('token');
+
+  useEffect(() => {
+    if (token) {
+      router.replace('/dashboard');
+    }
+  }, [token, router]);
+
   return (
     <div>
-      <h1>Main Dashboard</h1>
-      <nav>
-        <ul>
-          <li>
-            <Link href="/inventory/current">
-              <span>Current Inventory</span>
-            </Link>
-          </li>
-          <li>
-            <Link href="/inventory/incoming">
-              <span>Incoming Inventory</span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+      <h1>PowerSportsPro</h1>
+      <p>Welcome to PowerSportsPro!</p>
     </div>
   );
 };
