@@ -11,6 +11,11 @@ const getAll = async (req, res) => {
       where = {
         [Op.or]: [
           {
+            make: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          {
             model: {
               [Op.iLike]: `%${search}%`,
             },
@@ -27,7 +32,6 @@ const getAll = async (req, res) => {
     const currentInventory = await CurrentInventory.findAll({ where });
     res.status(200).json(currentInventory);
   } catch (error) {
-    console.error(error); // Add this line to log the error in the server console
     res.status(500).json({ message: 'Error retrieving current inventory', error: error.message });
   }
 };
