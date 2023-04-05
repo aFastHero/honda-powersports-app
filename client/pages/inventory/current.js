@@ -22,7 +22,7 @@ const CurrentInventory = () => {
       <ul>
         {currentInventory && currentInventory.map((item) => (
           <li key={item.id}>
-            {item.model} ({item.stockNumber})
+            {item.make} {item.model} ({item.stockNumber})
           </li>
         ))}
       </ul>
