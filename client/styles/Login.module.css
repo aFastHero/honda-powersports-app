@@ -1,0 +1,27 @@
+/* client/styles/Login.module.css */
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 300px;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.formGroup label {
+  margin-right: 10px;
+}
+
+.submitButton {
+  align-self: center;
+}

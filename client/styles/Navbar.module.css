@@ -1,0 +1,36 @@
+/* client/styles/Navbar.module.css */
+.navbar {
+  background-color: darkred;
+}
+
+.brand {
+  color: white !important;
+  font-weight: bold;
+}
+
+.navLink {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: black !important;
+  font-weight: bold;
+}
+
+.navbarButton {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+.navbarButton:hover,
+.navbarButton:focus {
+  color: black !important;
+  font-weight: bold;
+}
+
+.active {
+  color: black !important;
+  font-weight: bold;
+}
