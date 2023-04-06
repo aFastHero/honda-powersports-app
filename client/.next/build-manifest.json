@@ -40,10 +40,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/inventory/current.js"
     ],
-    "/login": [
+    "/inventory/incoming": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/login.js"
+      "static/chunks/pages/inventory/incoming.js"
     ]
   },
   "ampFirstPages": []
