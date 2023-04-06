@@ -11,7 +11,12 @@ const getAll = async (req, res) => {
       where = {
         [Op.or]: [
           {
-            make: {
+            stockNumber: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          {
+            unitType: {
               [Op.iLike]: `%${search}%`,
             },
           },
@@ -21,7 +26,12 @@ const getAll = async (req, res) => {
             },
           },
           {
-            stockNumber: {
+            make: {
+              [Op.iLike]: `%${search}%`,
+            },
+          },
+          {
+            modelName: {
               [Op.iLike]: `%${search}%`,
             },
           },

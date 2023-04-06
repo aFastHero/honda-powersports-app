@@ -16,10 +16,10 @@ const CurrentInventory = () => {
     setSearch(e.target.value);
   };
 
-  const handleSearchSubmit = (e) => {
-    e.preventDefault();
-    refetch();
-  };
+  // const handleSearchSubmit = (e) => {
+  //   e.preventDefault();
+  //   refetch();
+  // };
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -28,7 +28,7 @@ const CurrentInventory = () => {
   return (
     <div>
       <h1>Current Inventory</h1>
-      <form onSubmit={handleSearchSubmit}>
+      <form>
         <label htmlFor="search">Search:</label>
         <input
           type="text"
@@ -36,12 +36,12 @@ const CurrentInventory = () => {
           value={search}
           onChange={handleSearchChange}
         />
-        <button type="submit">Search</button>
+        {/* <button type="submit">Search</button> */}
       </form>
       <ul>
         {currentInventory && currentInventory.map((item) => (
           <li key={item.id}>
-            {item.make} {item.model} ({item.stockNumber})
+            {item.stockNumber} - {item.unitType} - {item.model} ({item.age}) - {item.vin} | {item.year} {item.make} {item.modelName} - {item.color} | ${item.msrp}
           </li>
         ))}
       </ul>
