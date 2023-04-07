@@ -19,12 +19,17 @@ const CurrentInventory = () => {
   const { data: currentInventory, isLoading, refetch } = useQuery(
     ['currentInventory', search, make, modelName, stockNumber],
     () => fetchCurrentInventory({search, make, modelName, stockNumber}),
-    { initialData: [] }
+    { initialData: [], enabled: true }
   );
 
   const [uniqueMakes, setUniqueMakes] = useState([]);
   const [uniqueModels, setUniqueModels] = useState([]);
   const [uniqueStockNumbers, setUniqueStockNumbers] = useState([]);
+  const [filteredInventory, setFilteredInventory] = useState([]);
+
+  React.useEffect(() => {
+    refetch();
+  }, [make, modelName, stockNumber, search]);
 
   React.useEffect(() => {
     if (currentInventory && currentInventory.length > 0) {
@@ -34,14 +39,16 @@ const CurrentInventory = () => {
           ...new Set(
             currentInventory
               .filter((item) => item.make === make)
-              .map((item) => item.model)
+              .map((item) => item.modelName)
           ),
-        ]);
+        ].sort());
+      } else {
+        setUniqueModels([]);
       }
-      if (make && model) {
+      if (make && modelName) {
         setUniqueStockNumbers(
           currentInventory
-            .filter((item) => item.make === make && item.model === model)
+            .filter((item) => item.make === make && item.modelName === modelName)
             .map((item) => item.stockNumber)
         );
       }
@@ -49,8 +56,22 @@ const CurrentInventory = () => {
   }, [currentInventory, make, modelName]);
 
   React.useEffect(() => {
-    refetch();
-  }, [make, modelName, stockNumber, search]);
+    let filteredItems = currentInventory;
+    
+    if (make) {
+      filteredItems = filteredItems.filter((item) => item.make === make);
+    }
+
+    if (modelName) {
+      filteredItems = filteredItems.filter((item) => item.modelName === modelName);
+    }
+
+    if (stockNumber) {
+      filteredItems = filteredItems.filter((item) => item.stockNumber === stockNumber);
+    }
+
+    setFilteredInventory(filteredItems);
+  }, [currentInventory, make, modelName, stockNumber]);
 
   const handleMakeChange = (e) => {
     setMake(e.target.value);
@@ -80,6 +101,7 @@ const CurrentInventory = () => {
     setMake('');
     setModelName('');
     setStockNumber('');
+    setUniqueModels([]);
   };
 
   // const handleSearchSubmit = (e) => {
@@ -143,7 +165,7 @@ const CurrentInventory = () => {
       </div>
       <button onClick={resetFilters}>Reset Filters</button>
       <ul>
-        {currentInventory && currentInventory.map((item) => (
+        {filteredInventory && filteredInventory.map((item) => (
           <li key={item.id}>
             {item.stockNumber} - {item.unitType} - {item.model} ({item.age}) - {item.vin} | {item.year} {item.make} {item.modelName} - {item.color} | ${item.msrp}
           </li>

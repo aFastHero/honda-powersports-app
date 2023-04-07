@@ -5,7 +5,7 @@ const currentInventoryController = require('../controllers/currentInventoryContr
 const passport = require('../middleware/passport');
 
 router.get('/', (req, res, next) => {
-  console.log('Before passport.authenticate'); // Add this log statement
+  // console.log('Before passport.authenticate'); // Add this log statement
   passport.authenticate('jwt', { session: false }, (err, user, info) => {
     if (err) return next(err);
     if (!user) return res.status(401).json({ message: 'Unauthorized' });
