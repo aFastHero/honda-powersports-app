@@ -1,8 +1,8 @@
 // client/pages/inventory/incoming.js
-
 import React from 'react';
 import { useQuery } from 'react-query';
 import apiClient from '../../lib/apiClient';
+import styles from '../../styles/Incoming.module.css';
 
 const fetchIncomingInventory = async () => {
   const response = await apiClient.get('/api/incomingInventory');
@@ -16,13 +16,15 @@ const IncomingInventory = () => {
     return <div>Loading...</div>;
   }
 
+  const filteredInventory = incomingInventory.filter(item => item.statusCode <= 5);
+
   return (
-    <div>
+    <div className={styles.incomingContainer}>
       <h1>Incoming Inventory</h1>
       <ul>
-        {incomingInventory && incomingInventory.map((item) => (
-          <li key={item.id}>
-            {item.model} ({item.estimatedShipDate}) - {item.quantity} ({item.hondaCode})
+        {filteredInventory && filteredInventory.map((item) => (
+          <li key={item.id} className={styles.listItem}>
+          ({item.estimatedShipDate}) {item.model} - {item.quantity} ({item.hondaCode})
           </li>
         ))}
       </ul>

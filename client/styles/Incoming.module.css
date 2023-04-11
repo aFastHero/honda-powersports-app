@@ -1,0 +1,25 @@
+/* client/styles/Incoming.module.css */
+.incomingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 100px;
+}
+
+.incomingContainer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.listItem {
+  /* No background color defined for this class */
+  text-align: left;
+}
+
+.listItem:nth-child(odd) {
+  background-color: #f0f0f0;
+}
+
+.listItem:nth-child(even) {
+  background-color: #ffffff;
+}

@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     orderType: DataTypes.STRING,
     orderDate: DataTypes.DATE,
     wh: DataTypes.STRING,
-    statusCode: DataTypes.STRING,
+    statusCode: DataTypes.INTEGER,
     statusDescription: DataTypes.STRING,
     index: DataTypes.STRING,
     unitType: DataTypes.STRING,
@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW, // Set defaultValue for updatedAt
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      defaultValue: null, // Set defaultValue for updatedAt
     },
   },
   {

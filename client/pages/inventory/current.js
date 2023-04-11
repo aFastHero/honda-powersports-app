@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import apiClient from '../../lib/apiClient';
+import styles from '../../styles/Current.module.css';
 
 const fetchCurrentInventory = async ({search, make, modelName, stockNumber}) => {
   const response = await apiClient.get('/api/currentInventory', {
@@ -114,7 +115,7 @@ const CurrentInventory = () => {
   }
 
   return (
-    <div>
+    <div className={styles.currentContainer}>
       <h1>Current Inventory</h1>
       <form>
         <label htmlFor="search">Search:</label>
@@ -126,47 +127,49 @@ const CurrentInventory = () => {
         />
         {/* <button type="submit">Search</button> */}
       </form>
-      <div>
-        <label htmlFor="make">Make:</label>
-        <select id="make" value={make} onChange={handleMakeChange}>
-          <option value="">All</option>
-          {uniqueMakes.map((uniqueMake, index) => (
-            <option key={index} value={uniqueMake}>
-              {uniqueMake}
-            </option>
-          ))}
-        </select>
+      <div className={styles.dropdownContainer}>
+        <div>
+          <label htmlFor="make">Make:</label>
+          <select id="make" value={make} onChange={handleMakeChange}>
+            <option value="">All</option>
+            {uniqueMakes.map((uniqueMake, index) => (
+              <option key={index} value={uniqueMake}>
+                {uniqueMake}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="model">Model Name:</label>
+          <select id="model" value={modelName} onChange={handleModelChange}>
+            <option value="">All</option>
+            {uniqueModels.map((uniqueModel, index) => (
+              <option key={index} value={uniqueModel}>
+                {uniqueModel}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="stockNumber">Stock Number:</label>
+          <select
+            id="stockNumber"
+            value={stockNumber}
+            onChange={handleStockNumberChange}
+          >
+            <option value="">All</option>
+            {uniqueStockNumbers.map((uniqueStockNumber, index) => (
+              <option key={index} value={uniqueStockNumber}>
+                {uniqueStockNumber}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button onClick={resetFilters}>Reset Filters</button>
       </div>
-      <div>
-        <label htmlFor="model">Model Name:</label>
-        <select id="model" value={modelName} onChange={handleModelChange}>
-          <option value="">All</option>
-          {uniqueModels.map((uniqueModel, index) => (
-            <option key={index} value={uniqueModel}>
-              {uniqueModel}
-            </option>
-          ))}
-        </select>
-      </div>
-      <div>
-        <label htmlFor="stockNumber">Stock Number:</label>
-        <select
-          id="stockNumber"
-          value={stockNumber}
-          onChange={handleStockNumberChange}
-        >
-          <option value="">All</option>
-          {uniqueStockNumbers.map((uniqueStockNumber, index) => (
-            <option key={index} value={uniqueStockNumber}>
-              {uniqueStockNumber}
-            </option>
-          ))}
-        </select>
-      </div>
-      <button onClick={resetFilters}>Reset Filters</button>
       <ul>
         {filteredInventory && filteredInventory.map((item) => (
-          <li key={item.id}>
+          <li key={item.unitId} className={styles.listItem}>
             {item.stockNumber} - {item.unitType} - {item.model} ({item.age}) - {item.vin} | {item.year} {item.make} {item.modelName} - {item.color} | ${item.msrp}
           </li>
         ))}

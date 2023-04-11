@@ -35,6 +35,22 @@ module.exports = (sequelize, DataTypes) => {
     pgmDealerNet: DataTypes.FLOAT,
     programBulletin: DataTypes.STRING,
     registrationType: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW, // Set defaultValue for createdAt
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW, // Set defaultValue for updatedAt
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW, // Set defaultValue for updatedAt
+    },
+  },
+  {
+    timestamps: true, // Enable timestamps management by Sequelize
+    paranoid: true, // Enable soft delete (paranoid mode)
   });
 
   return HondaModelCatalog;

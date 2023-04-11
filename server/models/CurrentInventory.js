@@ -8,7 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     model: DataTypes.STRING,
     color: DataTypes.STRING,
     msrp: DataTypes.FLOAT,
-    unitId: DataTypes.STRING,
+    unitId: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+    },
     modelName: DataTypes.STRING,
     invoice: DataTypes.FLOAT,
     holdback: DataTypes.FLOAT,
@@ -29,6 +32,10 @@ module.exports = (sequelize, DataTypes) => {
     updatedAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW, // Set defaultValue for updatedAt
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      defaultValue: null, // Set defaultValue for updatedAt
     },
   },
   {
