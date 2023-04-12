@@ -20,7 +20,7 @@ const LoginPage = () => {
         Cookies.set('token', response.data.token, { expires: 1 }); // Change 1 to the number of days you want the token to be stored
 
         // Redirect to the dashboard
-        router.push('/');
+        router.push('/dashboard');
       } else {
         setError('Authentication failed.');
       }

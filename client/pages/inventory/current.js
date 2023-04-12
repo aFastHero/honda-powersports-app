@@ -105,11 +105,6 @@ const CurrentInventory = () => {
     setUniqueModels([]);
   };
 
-  // const handleSearchSubmit = (e) => {
-  //   e.preventDefault();
-  //   refetch();
-  // };
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -167,13 +162,38 @@ const CurrentInventory = () => {
         </div>
         <button onClick={resetFilters}>Reset Filters</button>
       </div>
-      <ul>
-        {filteredInventory && filteredInventory.map((item) => (
-          <li key={item.unitId} className={styles.listItem}>
-            {item.stockNumber} - {item.unitType} - {item.model} ({item.age}) - {item.vin} | {item.year} {item.make} {item.modelName} - {item.color} | ${item.msrp}
-          </li>
-        ))}
-      </ul>
+      <table className={styles.inventoryTable}>
+        <thead>
+          <tr>
+            <th className={styles.inventoryHeader}>Stock Number</th>
+            <th className={styles.inventoryHeader}>Unit Type</th>
+            <th className={styles.inventoryHeader}>Model</th>
+            <th className={styles.inventoryHeader}>Age</th>
+            <th className={styles.inventoryHeader}>VIN</th>
+            <th className={styles.inventoryHeader}>Year</th>
+            <th className={styles.inventoryHeader}>Make</th>
+            <th className={styles.inventoryHeader}>Model Name</th>
+            <th className={styles.inventoryHeader}>Color</th>
+            <th className={styles.inventoryHeader}>MSRP</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredInventory && filteredInventory.map((item) => (
+            <tr key={item.unitid} className={styles.inventoryRow}>
+              <td className={styles.inventoryCell}>{item.stockNumber}</td>
+              <td className={styles.inventoryCell}>{item.unitType}</td>
+              <td className={styles.inventoryCell}>{item.model}</td>
+              <td className={styles.inventoryCell}>{item.age}</td>
+              <td className={styles.inventoryCell}>{item.vin}</td>
+              <td className={styles.inventoryCell}>{item.year}</td>
+              <td className={styles.inventoryCell}>{item.make}</td>
+              <td className={styles.inventoryCell}>{item.modelName}</td>
+              <td className={styles.inventoryCell}>{item.color}</td>
+              <td className={styles.inventoryCell}>${item.msrp}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

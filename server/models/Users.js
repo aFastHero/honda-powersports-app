@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Users = sequelize.define('Users', {
     id: {
       type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
       allowNull: false,
       primaryKey: true,
     },
@@ -26,6 +27,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(255),
       allowNull: false,
     },
+    role: {
+      type: DataTypes.STRING(255),
+      defaultValue: null,
+    },
     isAdmin: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -39,6 +44,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE,
       allowNull: false,
     },
+    deletedAt: {
+      type: DataTypes.DATE,
+      defaultValue: null,
+    },
+  },
+  {
+    timestamps: true,
+    paranoid: true,
   });
 
   return Users;

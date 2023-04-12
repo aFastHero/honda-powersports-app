@@ -11,15 +11,22 @@
   padding: 0;
 }
 
-.listItem {
-  /* No background color defined for this class */
-  text-align: left;
+.inventoryTable {
+  width: 100%;
+  border-collapse: collapse;
 }
 
-.listItem:nth-child(odd) {
+.inventoryHeader,
+.inventoryCell {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.inventoryRow:nth-child(odd) {
   background-color: #f0f0f0;
 }
 
-.listItem:nth-child(even) {
+.inventoryRow:nth-child(even) {
   background-color: #ffffff;
 }

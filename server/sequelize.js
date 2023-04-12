@@ -5,6 +5,10 @@ const CurrentInventoryModel = require('./models/CurrentInventory');
 const IncomingInventoryModel = require('./models/IncomingInventory');
 const HondaModelCatalogModel = require('./models/HondaModelCatalog');
 const UsersModel = require('./models/Users');
+const CustomerModel = require('./models/Customer');
+const LeadModel = require('./models/Lead');
+const CustomerNoteModel = require('./models/CustomerNote');
+const EventModel = require('./models/Event');
 
 const sequelize = new Sequelize(
   config.development.database,
@@ -23,6 +27,10 @@ const CurrentInventory = CurrentInventoryModel(sequelize, DataTypes);
 const IncomingInventory = IncomingInventoryModel(sequelize, DataTypes);
 const HondaModelCatalog = HondaModelCatalogModel(sequelize, DataTypes);
 const Users = UsersModel(sequelize, DataTypes);
+const Customer = CustomerModel(sequelize, DataTypes);
+const Lead = LeadModel(sequelize, DataTypes);
+const CustomerNote = CustomerNoteModel(sequelize, DataTypes);
+const Event = EventModel(sequelize, DataTypes);
 
 sequelize.sync();
 
@@ -33,4 +41,8 @@ module.exports = {
   IncomingInventory,
   HondaModelCatalog,
   Users,
+  Customer,
+  Lead,
+  CustomerNote,
+  Event,
 };

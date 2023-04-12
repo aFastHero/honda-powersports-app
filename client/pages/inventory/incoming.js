@@ -21,13 +21,38 @@ const IncomingInventory = () => {
   return (
     <div className={styles.incomingContainer}>
       <h1>Incoming Inventory</h1>
-      <ul>
-        {filteredInventory && filteredInventory.map((item) => (
-          <li key={item.id} className={styles.listItem}>
-          ({item.estimatedShipDate}) {item.model} - {item.quantity} ({item.hondaCode})
-          </li>
-        ))}
-      </ul>
+      <table className={styles.inventoryTable}>
+        <thead>
+          <tr>
+            <th className={styles.inventoryHeader}>Estimated Ship Date</th>
+            <th className={styles.inventoryHeader}>Order Number</th>
+            <th className={styles.inventoryHeader}>Honda Code</th>
+            <th className={styles.inventoryHeader}>Model</th>
+            <th className={styles.inventoryHeader}>Year</th>
+            <th className={styles.inventoryHeader}>Model Name</th>
+            <th className={styles.inventoryHeader}>Color</th>
+            <th className={styles.inventoryHeader}>MSRP</th>
+            <th className={styles.inventoryHeader}>Status Code</th>
+            <th className={styles.inventoryHeader}>Status Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredInventory && filteredInventory.map((item) => (
+            <tr key={item.id} className={styles.inventoryRow}>
+              <td className={styles.inventoryCell}>{item.estimatedShipDate}</td>
+              <td className={styles.inventoryCell}>{item.orderNumber}</td>
+              <td className={styles.inventoryCell}>{item.hondaCode}</td>
+              <td className={styles.inventoryCell}>{item.model}</td>
+              <td className={styles.inventoryCell}>20{item.year}</td>
+              <td className={styles.inventoryCell}>{item.modelName}</td>
+              <td className={styles.inventoryCell}>{item.color}</td>
+              <td className={styles.inventoryCell}>${item.msrp}</td>
+              <td className={styles.inventoryCell}>{item.statusCode}</td>
+              <td className={styles.inventoryCell}>{item.statusDescription}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
