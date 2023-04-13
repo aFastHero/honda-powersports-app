@@ -30,6 +30,7 @@ const CurrentInventory = () => {
 
   React.useEffect(() => {
     refetch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [make, modelName, stockNumber, search]);
 
   React.useEffect(() => {

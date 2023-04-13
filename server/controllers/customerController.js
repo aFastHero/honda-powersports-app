@@ -1,5 +1,4 @@
 // server/controllers/customerController.js
-// server/controllers/customerController.js
 const { Customer } = require('../sequelize');
 const { Op } = require('sequelize');
 

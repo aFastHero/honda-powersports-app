@@ -20,6 +20,7 @@ const generateToken = (user) => {
     id: user.id,
     username: user.email,
     role: user.role,
+    isAdmin: user.isAdmin,
   };
 
   const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
